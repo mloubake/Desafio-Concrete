@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/infoRepoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <ImageView
+            android:id="@+id/fotoUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"/>
+
+        <TextView
+            android:id="@+id/tituloPullRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/fotoUsuario"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="4dp"/>
+
+        <TextView
+            android:id="@+id/descPullRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/fotoUsuario"
+            android:layout_below="@id/tituloPullRequest"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="4dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/detalhesRepoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/infoRepoLayout"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+        <TextView
+            android:id="@+id/nomeUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fotoUsuario"
+            android:layout_marginRight="4dp"/>
+
+        <TextView
+            android:id="@+id/DataRepositorio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/detalhesRepoLayout"
+        android:layout_marginTop="8dp"/>
+</RelativeLayout>
