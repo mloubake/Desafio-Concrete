@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/infoRepoLayout"
@@ -19,7 +19,7 @@
             android:layout_marginRight="2dp"/>
 
         <TextView
-            android:id="@+id/tituloPullRequest"
+            android:id="@+id/tituloRepositorio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/fotoUsuario"
@@ -27,11 +27,11 @@
             android:layout_marginLeft="4dp"/>
 
         <TextView
-            android:id="@+id/descPullRequest"
+            android:id="@+id/descRepositorio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/fotoUsuario"
-            android:layout_below="@id/tituloPullRequest"
+            android:layout_below="@id/tituloRepositorio"
             android:layout_marginTop="2dp"
             android:layout_marginLeft="4dp"/>
     </RelativeLayout>
@@ -56,19 +56,35 @@
             android:id="@+id/starRepositorio"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="40dp"/>
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/ic_star"/>
+
+        <TextView
+            android:id="@+id/starNumeroRepositorio"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="4dp"/>
 
         <ImageView
             android:id="@+id/forkRepositorio"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="40dp"/>
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/ic_fork"/>
+
+        <TextView
+            android:id="@+id/forkNumeroRepositorio"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="4dp"/>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/detalhesRepoLayout"
-        android:layout_marginTop="8dp"/>
+        android:background="#ccc"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"/>
 
 </RelativeLayout>
