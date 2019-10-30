@@ -13,82 +13,71 @@ import java.util.List;
 import br.com.mloubake.desafioconcretegithubapi.R;
 import br.com.mloubake.desafioconcretegithubapi.adapter.RepositorioAdapter;
 import br.com.mloubake.desafioconcretegithubapi.api.Client;
-import br.com.mloubake.desafioconcretegithubapi.api.GitService;
-import br.com.mloubake.desafioconcretegithubapi.model.Owner;
 import br.com.mloubake.desafioconcretegithubapi.model.Repositorio;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Client.request {
 
-    private static final String TAG = "";
+    private static final String TAG = "TAG";
     int screenOrientation;
 
-    ArrayList<Owner> mAutorList;
     ArrayList<Repositorio> mRepoList;
-
     RepositorioAdapter mAdapter;
-    RecyclerView mRecyclerView;
+
+    RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAdapter = new RepositorioAdapter();
+        mRepoList = new ArrayList<>();
 
-        fetchRepositorioData();
+        startRequest();
     }
 
-    private void fetchRepositorioData() {
-        Retrofit retrofit = Client.getRetrofitClient();
-        GitService mGitService = retrofit.create(GitService.class);
-        final Call<Repositorio> request = mGitService.getRepositorio("java");
-
+    @Override
+    public void startRequest() {
         request.enqueue(new Callback<Repositorio>() {
             @Override
             public void onResponse(Call<Repositorio> call, Response<Repositorio> response) {
                 if(!response.isSuccessful()) {
                     Log.d(TAG, "Response Error Code: " + response.code());
                 }
-                Log.d(TAG, "Response Error Code: " + response.code());
+                Log.d(TAG, "Response Success Code: " + response.code());
+
                 List<Repositorio> repositorios = response.body().getItems();
 
-//                mAutorList = new ArrayList<>();
-                mRepoList = new ArrayList<>();
-
-                for(int i = 0; i < repositorios.size(); i++) {
-
-                    Owner autor = new Owner(
-//                            repositorios.get(i).getOwner().get(3).getUrlFoto(),
-//                            repositorios.get(i).getOwner().get(0).getNomeUsuario()
-                    );
-
-
+                for (int i = 0; i < repositorios.size(); i++) {
                     Repositorio repos = new Repositorio(
-                            response.body().getItems().get(i).getOwner().get(3).getUrlFoto(),
-                            response.body().getItems().get(i).getOwner().get(0).getNomeUsuario(),
+                            repositorios.get(i).getUsuario().getUrlFoto(),
+                            repositorios.get(i).getUsuario().getNomeUsuario(),
                             repositorios.get(i).getRepoTitulo(),
                             repositorios.get(i).getRepoDesc(),
                             repositorios.get(i).getStars(),
-                            repositorios.get(i).getForks()
-                    );
+                            repositorios.get(i).getForks());
 
-                    mAutorList.add(autor);
                     mRepoList.add(repos);
                 }
 
-                mRecyclerView = findViewById(R.id.recyclerView);
-                mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false));
+                recyclerView = findViewById(R.id.recyclerView);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
+                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(linearLayoutManager);
                 mAdapter = new RepositorioAdapter(MainActivity.this, mRepoList);
-                mRecyclerView.setAdapter(mAdapter);
+                recyclerView.setAdapter(mAdapter);
             }
 
             @Override
             public void onFailure(Call<Repositorio> call, Throwable t) {
+
             }
         });
+
     }
+
 }
+

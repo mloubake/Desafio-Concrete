@@ -1,25 +1,12 @@
 package br.com.mloubake.desafioconcretegithubapi.model;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Repositorio {
 
-    @SerializedName("owner")
-    List<Owner> ownerAtributos;
-
-    @SerializedName("avatar_url")
-    String urlFoto;
-
-    @SerializedName("login")
-    String nomeUsuario;
-
-    @SerializedName("full_name")
+    @SerializedName("name")
     String repoTitulo;
 
     @SerializedName("description")
@@ -34,36 +21,20 @@ public class Repositorio {
     @SerializedName("items")
     List<Repositorio> items;
 
-    public Repositorio(String urlFoto, String nomeUsuario, String repoTitulo, String repoDesc, int stars, int forks) {
-        this.urlFoto = urlFoto;
-        this.nomeUsuario = nomeUsuario;
+//    Problema de layout sumindo aqui
+    @SerializedName("owner")
+    Usuario usuario;
+
+    String fotoUser;
+    String nomeUser;
+
+    public Repositorio(String fotoUser, String nomeUser, String repoTitulo, String repoDesc, int stars, int forks) {
+        this.fotoUser = fotoUser;
+        this.nomeUser = nomeUser;
         this.repoTitulo = repoTitulo;
         this.repoDesc = repoDesc;
         this.stars = stars;
         this.forks = forks;
-    }
-
-    public Repositorio(List<Owner> ownerAtributos, String repoTitulo, String repoDesc, int stars, int forks) {
-        this.ownerAtributos = ownerAtributos;
-        this.repoTitulo = repoTitulo;
-        this.repoDesc = repoDesc;
-        this.stars = stars;
-        this.forks = forks;
-    }
-
-    public Repositorio(String repoTitulo, String repoDesc, int stars, int forks) {
-        this.repoTitulo = repoTitulo;
-        this.repoDesc = repoDesc;
-        this.stars = stars;
-        this.forks = forks;
-    }
-
-    public String getUrlFoto() {
-        return urlFoto;
-    }
-
-    public String getNomeUsuario() {
-        return nomeUsuario;
     }
 
     public String getRepoTitulo() {
@@ -86,7 +57,36 @@ public class Repositorio {
         return items;
     }
 
-    public List<Owner> getOwner() {
-        return ownerAtributos;
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+
+    public String getFotoUser() {
+        return fotoUser;
+    }
+
+    public String getNomeUser() {
+        return nomeUser;
+    }
+
+    public class Usuario {
+
+        @SerializedName("avatar_url")
+        String urlFoto;
+
+        @SerializedName("login")
+        String nomeUsuario;
+
+        public Usuario() {
+        }
+
+        public String getUrlFoto() {
+            return urlFoto;
+        }
+
+        public String getNomeUsuario() {
+            return nomeUsuario;
+        }
     }
 }

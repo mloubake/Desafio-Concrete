@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/infoRepoLayout"
@@ -13,31 +14,31 @@
         android:layout_marginRight="8dp">
 
         <ImageView
-            android:id="@+id/fotoUsuario"
+            android:id="@+id/RepoFotoUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="2dp"/>
 
         <TextView
-            android:id="@+id/tituloRepositorio"
+            android:id="@+id/RepoTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/fotoUsuario"
+            android:layout_toRightOf="@id/RepoFotoUser"
             android:layout_marginBottom="2dp"
             android:layout_marginLeft="4dp"/>
 
         <TextView
-            android:id="@+id/descRepositorio"
+            android:id="@+id/RepoDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/fotoUsuario"
-            android:layout_below="@id/tituloRepositorio"
+            android:layout_toRightOf="@id/RepoFotoUser"
+            android:layout_below="@id/RepoTitulo"
             android:layout_marginTop="2dp"
             android:layout_marginLeft="4dp"/>
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/detalhesRepoLayout"
+        android:id="@+id/detalheRepoLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/infoRepoLayout"
@@ -46,45 +47,22 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp">
         <TextView
-            android:id="@+id/nomeUsuario"
+            android:id="@+id/RepoNomeUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/fotoUsuario"
+            android:layout_below="@id/RepoFotoUser"
             android:layout_marginRight="4dp"/>
 
-        <ImageView
-            android:id="@+id/starRepositorio"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="40dp"
-            android:background="@drawable/ic_star"/>
-
         <TextView
-            android:id="@+id/starNumeroRepositorio"
+            android:id="@+id/RepoDate"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginLeft="4dp"/>
-
-        <ImageView
-            android:id="@+id/forkRepositorio"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="40dp"
-            android:background="@drawable/ic_fork"/>
-
-        <TextView
-            android:id="@+id/forkNumeroRepositorio"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginLeft="4dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"/>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/detalhesRepoLayout"
-        android:background="#ccc"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp"/>
-
+        android:layout_below="@id/detalheRepoLayout"
+        android:layout_marginTop="8dp"/>
 </RelativeLayout>
